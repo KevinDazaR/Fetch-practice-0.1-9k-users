@@ -21,31 +21,33 @@
           </div>
         </div>
 
-        <div class="container_right_usersList">
-            <table>
+        <div class="container_right_usersList col-md-10">
+
+            <table id="table_data">
+              <thead>
+                <tr>  <!--TR  = ROW - FILA -->
+                  <th colspan="4" class="d-flex justify-content-center"> Database Hospital Riwi Medellìn</th>
                 <tr>
-                    <th>id</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                </tr>
-            </table>
-            <table>
+              
+              <tr>
+                <th># ID</th> <!-- TH =(header cell) elements.-->
+                <th>Name</th>
+                <th>Email</th>
+                <th colspan="2" class="text-center">Action</th>
+              </tr>
+            </thead>
+              <tbody id="table_body">
+                
                 <tr>
-                  <th>Company</th>
-                  <th>Contact</th>
-                  <th>Country</th>
-                </tr>
-                <tr>
+                  <td>00</td>  <!-- TD = (data cell) -->
                   <td>Alfreds Futterkiste</td>
-                  <td>Maria Anders</td>
-                  <td>Germany</td>
+                  <td>alfredo@prueba.io</td>
+                  <td><button class="btn btn-primary">Editar</button></td>
+                  <td><button class="btn btn-primary">Eliminar</button></td>
                 </tr>
-                <tr>
-                  <td>Centro comercial Moctezuma</td>
-                  <td>Francisco Chang</td>
-                  <td>Mexico</td>
-                </tr>
-              </table>
+              </tbody>
+            </table>
+
         </div>
       </div>
     </div>
