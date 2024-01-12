@@ -2,10 +2,13 @@ var result = fetch("https://memin.io/public/api/v2/users")
   .then((result) => {
     return result.json();
   })
-  .then((data) => {
-    data.data.forEach(function (element) {
-      console.log(element.name);
-
+  .then((serverData) => {
+    console.log(serverData.data, typeof(serverData.data))
+    const listaUsuarios = serverData.data
+    let contador = 0
+    listaUsuarios.forEach(function (element) {
+      //console.log(element.name);
+      
       /*CAPTURO*/
       let tableBody = document.getElementById("table_body");
 
@@ -63,8 +66,7 @@ var result = fetch("https://memin.io/public/api/v2/users")
       let btnEliminar = document.createElement("button");
       trRow.appendChild(btnEliminar);
       btnEliminar.innerText = "eliminar";
-      btnEliminar.classList.add("btn");
-      btnEliminar.classList.add("btn-primary");
+      btnEliminar.classList.add("btn", "btn-primary");
       btnEliminar.setAttribute("data-bs-toggle", "modal");
       btnEliminar.setAttribute("data-bs-target", "#modal_window");
 
@@ -73,8 +75,14 @@ var result = fetch("https://memin.io/public/api/v2/users")
 
       btnEliminar.setAttribute("type", "buton");
       btnEliminar.setAttribute("value", element.id);
-      btnEliminar.setAttribute("onclick", `eliminar(${element.id})`);
-
+      const elID = `${element.id} y ${contador}`
+      //btnEliminar.addEventListener('click', (e) => eliminar(e))
+      //console.log(element)
+      const convertirObjetoJson = JSON.stringify(element)
+      console.log(typeof(convertirObjetoJson))
+      btnEliminar.setAttribute("onclick", `eliminar(${convertirObjetoJson})`);
+      contador += 1
+      console.log(elID, contador)
       /* BTN ELIMINAR */
     });
   });
@@ -87,7 +95,7 @@ function editar(idDelElement) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      //console.log(data);
       /* CAPTURE the inputs in html */
       let idInput = document.getElementById("id_input");
       let nameInput = document.getElementById("name_input");
@@ -103,11 +111,38 @@ function eliminar(idDelElement) {
   fetch(`https://memin.io/public/api/v2/users/${idDelElement}`, {
     method: "DELETE",
   });
+  console.log(idDelElement)
+  //const convertirObjeto = JSON.parse(idDelElement)
+  console.log(typeof(idDelElement))
+  const elementosModal = 
+    `
+      ${idDelElement.name}
+      ${idDelElement.email}
+    `
 
-  let modal_body = document.getElementsByClassName("modal-body");
+  //const elementoHTML = idDelElement.target
+
+  let modal_text = document.getElementById("modal-text")
+  //console.log(modal_body)
   let p_modal_body = document.createElement("p");
-  modal_body.appendChild(p_modal_body);
-  p_modal_body.innerHTML = idDelElement.name;
-
-  console.log("eliminar", idDelElement);
+  //p_modal_body.innerText = elementoHTML.value;
+  modal_text.innerText = elementosModal
+  //console.log(elementoHTML.value)
+  //p_modal_body.innerHTML = "";
+  //console.log(p_modal_body)
+  //modal_body.appendChild(p_modal_body);
 }
+
+// function pruebaModal(idDelElement){
+
+//   let modal_body = document.getElementById("modal-body")
+//   console.log(modal_body)
+//   let p_modal_body = document.createElement("p");
+//   p_modal_body.innerHTML = "a";
+//   console.log(p_modal_body)
+//   modal_body.appendChild(p_modal_body);
+
+
+//   console.log("aa")
+
+// }
