@@ -1,0 +1,31 @@
+* {
+  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+body {
+  background: rgba(97, 99, 99, 0.144);
+  /* 
+  background: linear-gradient(
+    90deg,
+    rgba(220, 251, 255, 1) 0%,
+    rgba(232, 244, 255, 1) 46%,
+    rgba(222, 243, 255, 1) 100%
+  ); */
+  color: black;
+}
+
+table {
+  margin-top: 50px;
+}
+
+table,
+tr {
+  border: 1px solid #000000;
+  padding: 5px;
+  width: 80%;
+}
+
+/* table {
+  padding: 5px;
+} */
